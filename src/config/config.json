@@ -1,14 +1,14 @@
 {
   "site": {
-    "title": "Bookworm Light Astro | Blog Template",
-    "base_url": "https://bookworm-light-astro.vercel.app",
+    "title": "Clarity Spaces",
+    "base_url": "https://clarity-spaces.vercel.app/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_width": "200",
     "logo_height": "34",
-    "logo_text": "Bookworm Light"
+    "logo_text": "Clarity Spaces Light"
   },
 
   "settings": {
@@ -17,9 +17,9 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "Grupo 2 = Proceso Administrativo",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Bookworm Light Astro Blog Template"
+    "meta_description": "Clarity Spaces es una plataforma de gestión de espacios de trabajo que permite a los usuarios reservar salas, gestionar recursos y optimizar el uso del espacio en oficinas y otros entornos laborales."
   },
 
   "params": {
@@ -28,8 +28,8 @@
   },
 
   "contactinfo": {
-    "address": "355 S Grand Ave <br/> Los Angeles, CA 90071",
-    "email": "info@bookworm.org",
-    "phone": "+800 567 1234"
+    "address": "8va Avenida Zona 4 <br/> Chimaltenango, GT 04001",
+    "email": "info@clarityspaces.org",
+    "phone": "+502 4714-7436"
   }
 }
