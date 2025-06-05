@@ -9,12 +9,14 @@ const aboutCollection = defineCollection({
     meta_title: z.string().optional(),
     image: z.string().optional(),
     draft: z.boolean().optional(),
-    what_i_do: z.object({
+    team: z.object({
       title: z.string(),
-      items: z.array(
+      members: z.array(
         z.object({
-          title: z.string(),
-          description: z.string(),
+          name: z.string(),
+          position: z.string(),
+          email: z.string(),
+          responsibilities: z.array(z.string()),
         }),
       ),
     }),

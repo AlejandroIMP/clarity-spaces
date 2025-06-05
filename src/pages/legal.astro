@@ -1,0 +1,487 @@
+---
+import Base from "@/layouts/Base.astro";
+import { Image } from "astro:assets";
+
+// Import image assets for optimization
+import previewPatenteEmpresa from "../../public/images/preview-patente-empresa.jpg";
+import previewPatenteSociedad from "../../public/images/preview-patente-sociedad.jpg";
+import previewRegistroMercantil from "../../public/images/preview-registro-mercantil.jpg";
+---
+
+<Base>
+  <section class="section">
+    <div class="container px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Información Legal</h1>
+        <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          Aquí encontrarás información legal importante sobre nuestro sitio web y empresa.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
+        <!-- Patente de Comercio -->
+        <div class="border rounded-lg p-4 sm:p-6 shadow-md bg-white">
+          <h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#2e8785]">Patente de Comercio</h2>
+          <p class="mb-6 text-sm sm:text-base text-gray-600">
+            Documento oficial que certifica nuestra actividad comercial legal.
+          </p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <!-- Patente de Empresa -->
+            <div class="group">
+              <button 
+                type="button"
+                class="w-full cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#2e8785] focus:ring-offset-2 rounded-lg"
+                onclick="openModal('patenteEmpresaModal')"
+                aria-label="Ver patente de empresa en pantalla completa"
+              >
+                <div class="aspect-[8.5/11] bg-gray-100 rounded border overflow-hidden">
+                  <Image
+                    src={previewPatenteEmpresa}
+                    alt="Vista previa de la patente de comercio de empresa"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={300}
+                    height={400}
+                    format="webp"
+                    quality={80}
+                  />
+                </div>
+                <p class="text-center text-xs sm:text-sm mt-2 font-medium">Patente de Empresa</p>
+              </button>
+            </div>
+            
+            <!-- Patente de Sociedad -->
+            <div class="group">
+              <button 
+                type="button"
+                class="w-full cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#2e8785] focus:ring-offset-2 rounded-lg"
+                onclick="openModal('patenteSociedadModal')"
+                aria-label="Ver patente de sociedad en pantalla completa"
+              >
+                <div class="aspect-[8.5/11] bg-gray-100 rounded border overflow-hidden">
+                  <Image
+                    src={previewPatenteSociedad}
+                    alt="Vista previa de la patente de comercio de sociedad"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={300}
+                    height={400}
+                    format="webp"
+                    quality={80}
+                  />
+                </div>
+                <p class="text-center text-xs sm:text-sm mt-2 font-medium">Patente de Sociedad</p>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <a 
+              href="/documents/patente_comercio_empresa.pdf" 
+              download 
+              class="inline-flex items-center justify-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#2e8785] focus:ring-offset-2"
+              aria-label="Descargar patente de comercio de empresa en PDF"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              <p>
+                <span class="hidden sm:inline">Descargar </span> Patente de Empresa
+              </p>
+            </a>
+            <a 
+              href="/documents/patente_comercio_sociedad.pdf" 
+              download 
+              class="inline-flex items-center justify-center px-4 py-2 bg-[#73b355] text-white rounded-lg hover:bg-[#5a8f44] transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#73b355] focus:ring-offset-2"
+              aria-label="Descargar patente de comercio de sociedad en PDF"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              <p>
+                <span class="hidden sm:inline">Descargar </span> Patente de Sociedad
+              </p>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Registro Mercantil -->
+        <div class="border rounded-lg p-4 sm:p-6 shadow-md bg-white">
+          <h2 class="text-xl sm:text-2xl font-bold mb-4 text-[#2e8785]">Registro Mercantil</h2>
+          <p class="mb-6 text-sm sm:text-base text-gray-600">
+            Inscripción oficial de nuestra empresa en el Registro Mercantil.
+          </p>
+          
+          <div class="mb-6 group">
+            <button 
+              type="button"
+              class="w-full cursor-pointer hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#2e8785] focus:ring-offset-2 rounded-lg"
+              onclick="openModal('registroMercantilModal')"
+              aria-label="Ver registro mercantil en pantalla completa"
+            >
+              <div class="aspect-[16/11] bg-gray-100 rounded border overflow-hidden">
+                <Image
+                  src={previewRegistroMercantil}
+                  alt="Vista previa del documento de registro mercantil"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={400}
+                  height={275}
+                  format="webp"
+                  quality={80}
+                />
+              </div>
+              <p class="text-center text-xs sm:text-sm mt-2 font-medium">
+                Documento de Registro Mercantil (2 páginas)
+              </p>
+            </button>
+          </div>
+          
+          <div class="text-center">
+            <a 
+              href="/documents/registro_mercantil.PDF" 
+              download 
+              class="inline-flex items-center justify-center px-6 py-3 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#2e8785] focus:ring-offset-2"
+              aria-label="Descargar registro mercantil en PDF"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              Descargar Registro Mercantil
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Nota legal -->
+      <div class="bg-[#eefff0] border border-[#73b355] p-4 sm:p-6 rounded-lg">
+        <h3 class="font-bold mb-3 text-[#2e8785] text-base sm:text-lg inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </svg>
+          Información Legal
+        </h3>
+        <p class="text-sm sm:text-base text-[#000500] leading-relaxed">
+          Estos documentos son comprobantes legales de nuestra actividad comercial. Todos los derechos reservados. 
+          Para cualquier consulta legal, favor de <strong>contactar a nuestro departamento jurídico</strong> al teléfono 
+          de la empresa o mediante el formulario de contacto.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modales para visualización completa -->
+  <!-- Patente de Empresa Modal -->
+  <div 
+    id="patenteEmpresaModal" 
+    class="fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4 hidden"
+    role="dialog"
+    aria-labelledby="modalTitle1"
+    aria-describedby="modalDesc1"
+    aria-modal="true"
+  >
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] mx-auto overflow-hidden flex flex-col">
+      <div class="p-4 border-b flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+        <div>
+          <h3 id="modalTitle1" class="text-lg sm:text-xl font-bold text-[#2e8785]">Patente de Comercio - Empresa</h3>
+          <p id="modalDesc1" class="text-sm text-gray-600">Documento oficial de patente comercial</p>
+        </div>
+        <button 
+          type="button"
+          onclick="closeModal('patenteEmpresaModal')" 
+          class="text-gray-500 hover:text-gray-700 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8785] self-end sm:self-center"
+          aria-label="Cerrar modal de patente de empresa"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4 flex-grow overflow-auto relative">
+        <div id="loadingPatente1" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+          <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+            <p class="text-gray-600">Cargando documento...</p>
+          </div>
+        </div>
+        <object 
+          data="/documents/patente_comercio_empresa.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="100%" 
+          style="min-height: 60vh;"
+          aria-label="Documento PDF de patente de empresa"
+          onload="document.getElementById('loadingPatente1').style.display='none'"
+          onerror="showPdfError('loadingPatente1', '/documents/patente_comercio_empresa.pdf')"
+        >
+          <div class="text-center py-8">
+            <div class="mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
+              </svg>
+              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+            </div>
+            <a 
+              href="/documents/patente_comercio_empresa.pdf" 
+              download 
+              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              Descargar PDF
+            </a>
+          </div>
+        </object>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Patente de Sociedad Modal -->
+  <div 
+    id="patenteSociedadModal" 
+    class="fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4 hidden"
+    role="dialog"
+    aria-labelledby="modalTitle2"
+    aria-describedby="modalDesc2"
+    aria-modal="true"
+  >
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] mx-auto overflow-hidden flex flex-col">
+      <div class="p-4 border-b flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+        <div>
+          <h3 id="modalTitle2" class="text-lg sm:text-xl font-bold text-[#2e8785]">Patente de Comercio - Sociedad</h3>
+          <p id="modalDesc2" class="text-sm text-gray-600">Documento oficial de patente de sociedad</p>
+        </div>
+        <button 
+          type="button"
+          onclick="closeModal('patenteSociedadModal')" 
+          class="text-gray-500 hover:text-gray-700 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8785] self-end sm:self-center"
+          aria-label="Cerrar modal de patente de sociedad"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4 flex-grow overflow-auto relative">
+        <div id="loadingPatente2" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+          <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+            <p class="text-gray-600">Cargando documento...</p>
+          </div>
+        </div>
+        <object 
+          data="/documents/patente_comercio_sociedad.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="100%" 
+          style="min-height: 60vh;"
+          aria-label="Documento PDF de patente de sociedad"
+          onload="document.getElementById('loadingPatente2').style.display='none'"
+          onerror="showPdfError('loadingPatente2', '/documents/patente_comercio_sociedad.pdf')"
+        >
+          <div class="text-center py-8">
+            <div class="mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
+              </svg>
+              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+            </div>
+            <a 
+              href="/documents/patente_comercio_sociedad.pdf" 
+              download 
+              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              Descargar PDF
+            </a>
+          </div>
+        </object>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Registro Mercantil Modal -->
+  <div 
+    id="registroMercantilModal" 
+    class="fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 p-4 hidden"
+    role="dialog"
+    aria-labelledby="modalTitle3"
+    aria-describedby="modalDesc3"
+    aria-modal="true"
+  >
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] mx-auto overflow-hidden flex flex-col">
+      <div class="p-4 border-b flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+        <div>
+          <h3 id="modalTitle3" class="text-lg sm:text-xl font-bold text-[#2e8785]">Registro Mercantil</h3>
+          <p id="modalDesc3" class="text-sm text-gray-600">Documento oficial de registro mercantil (2 páginas)</p>
+        </div>
+        <button 
+          type="button"
+          onclick="closeModal('registroMercantilModal')" 
+          class="text-gray-500 hover:text-gray-700 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8785] self-end sm:self-center"
+          aria-label="Cerrar modal de registro mercantil"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4 flex-grow overflow-auto relative">
+        <div id="loadingRegistro" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+          <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+            <p class="text-gray-600">Cargando documento...</p>
+          </div>
+        </div>
+        <object 
+          data="/documents/registro_mercantil.PDF" 
+          type="application/pdf" 
+          width="100%" 
+          height="100%" 
+          style="min-height: 60vh;"
+          aria-label="Documento PDF de registro mercantil"
+          onload="document.getElementById('loadingRegistro').style.display='none'"
+          onerror="showPdfError('loadingRegistro', '/documents/registro_mercantil.PDF')"
+        >
+          <div class="text-center py-8">
+            <div class="mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
+              </svg>
+              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+            </div>
+            <a 
+              href="/documents/registro_mercantil.PDF" 
+              download 
+              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              Descargar PDF
+            </a>
+          </div>
+        </object>
+      </div>
+    </div>
+  </div>
+  
+  <script is:inline>
+    function showPdfError(loadingId, pdfUrl) {
+      const loadingEl = document.getElementById(loadingId);
+      if (loadingEl) {
+        loadingEl.innerHTML = `
+          <div class="text-center">
+            <div class="mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-red-400 mb-4" viewBox="0 0 16 16">
+                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <p class="text-red-600 mb-4">Error al cargar el PDF</p>
+            </div>
+            <a href="${pdfUrl}" download class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+              </svg>
+              Descargar PDF
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function openModal(id) {
+      // Close all other modals first
+      const modals = document.querySelectorAll('[id$="Modal"]');
+      modals.forEach(modal => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+      document.body.classList.remove('overflow-hidden');
+      
+      // Open the requested modal
+      const modalElement = document.getElementById(id);
+      if (modalElement) {
+        modalElement.classList.remove('hidden');
+        modalElement.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
+        
+        // Focus management for accessibility
+        const closeButton = modalElement.querySelector('button[onclick*="closeModal"]');
+        if (closeButton) {
+          closeButton.focus();
+        }
+      }
+    }
+    
+    function closeModal(id) {
+      const modalElement = document.getElementById(id);
+      if (modalElement) {
+        modalElement.classList.add('hidden');
+        modalElement.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+        
+        // Return focus to the trigger button
+        const triggerButton = document.querySelector(`button[onclick*="${id}"]`);
+        if (triggerButton) {
+          triggerButton.focus();
+        }
+      }
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[id$="Modal"]').forEach(modal => {
+          if (!modal.classList.contains('hidden')) {
+            const modalId = modal.id;
+            closeModal(modalId);
+          }
+        });
+      }
+    });
+    
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+      if (e.target.id && e.target.id.endsWith('Modal')) {
+        closeModal(e.target.id);
+      }
+    });
+    
+    // Trap focus within modal for accessibility
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        const activeModal = document.querySelector('[id$="Modal"]:not(.hidden)');
+        if (activeModal) {
+          const focusableElements = activeModal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+          
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      }
+    });
+  </script>
+</Base>

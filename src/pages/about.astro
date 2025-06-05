@@ -4,58 +4,115 @@ import { markdownify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getEntry, render } from "astro:content";
+import { FaEnvelope, FaCheck, FaCrown, FaPalette, FaLeaf, FaCalculator, FaTruck, FaShieldAlt } from "react-icons/fa";
 
 const entry = (await getEntry("about", "-index")) as CollectionEntry<"about">;
 const { Content } = await render(entry);
-const { title, meta_title, image, what_i_do } = entry.data;
+const { title, meta_title, image, team } = entry.data;
 ---
 
 <Base title={title} meta_title={meta_title} image={image}>
   <section class="section">
     <div class="container">
       <div class="row md:gx-4">
-        <div class="sm:col-5 md:col-4">
+        <div class="col-12 sm:col-5 md:col-4 lg:col-4 mb-6 md:mb-0">
           {
             image && (
-              <div class="img-cover mb-8">
+              <div class="img-cover mb-6 md:mb-8">
                 <Image
                   src={image}
                   width={295}
                   height={395}
                   alt={title}
-                  class="rounded-lg w-full"
+                  class="rounded-lg w-full mx-auto max-w-sm md:max-w-none"
                 />
               </div>
             )
           }
         </div>
-        <div class="sm:col-7 md:col-8">
-          <h1 set:html={markdownify(title)} class="h3 mb-8" />
+        <div class="col-12 sm:col-7 md:col-8 lg:col-8">
+          <h1 set:html={markdownify(title)} class="h3 mb-6 md:mb-8 text-center md:text-left" />
 
-          <div class="content">
+          <div class="content text-justify">
             <Content />
           </div>
-          <a href="/contact" class="btn btn-primary text-white py-2"
-            >Get In Touch</a
-          >
+          <div class="text-center md:text-left mt-6">
+            <a href="/contact" class="btn btn-primary text-white py-2 px-4 w-full sm:w-auto inline-block"
+              >Contáctanos</a
+            >
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section pt-0">
-    <div class="container">
-      <h3 class="page-heading mb-20">{what_i_do.title}</h3>
-      <div class="row justify-center gy-4 text-center">
-        {
-          what_i_do.items.map((item: any) => (
-            <div class="lg:col-4 md:col-6">
-              <i class="{{.icon}} fa-3x text-primary mb-4" />
-              <h4 class="text-dark font-weight-700 mb-3">{item.title}</h4>
-              <p>{item.description}</p>
+  <!-- Team Organizational Chart Section -->
+  <section class="section pt-0" style="background-color: #eefff0;">
+    <div class="container px-4">
+      <h2 class="page-heading mb-12 md:mb-20 text-center pt-6 md:pt-10 px-4" style="color: #000500;">{team.title}</h2>
+      
+      <!-- CEO at the top -->
+      <div class="row justify-center mb-8 md:mb-12">
+        {team.members.filter((member: any) => member.position.includes("CEO") || member.position.includes("Director Ejecutivo")).map((ceo: any) => (
+          <div class="col-12 sm:col-8 md:col-6 lg:col-5 xl:col-4 mb-6 md:mb-8">
+            <div class="team-card text-center p-4 md:p-6 rounded-lg shadow-lg" style="background: white; border: 3px solid #2e8785;">
+              <div class="mb-3 md:mb-4 flex justify-center">
+                <FaCrown client:load className="text-4xl md:text-5xl lg:text-6xl mb-3 md:mb-4" style={{ color: "#2e8785" }} />
+              </div>
+              <h3 class="text-lg md:text-xl font-bold mb-2" style="color: #000500;">{ceo.name}</h3>
+              <p class="text-base md:text-lg font-semibold mb-3" style="color: #2e8785;">{ceo.position}</p>
+              <div class="flex items-center justify-center mb-3 md:mb-4 flex-wrap">
+                <FaEnvelope client:load className="mr-2 flex-shrink-0" style={{ color: "#73b355" }} />
+                <span class="text-xs md:text-sm break-all" style="color: #000500;">{ceo.email}</span>
+              </div>
+              <div class="text-left">
+                <h4 class="font-semibold mb-2 text-sm md:text-base" style="color: #2e8785;">Responsabilidades:</h4>
+                <ul class="space-y-1 md:space-y-2">
+                  {ceo.responsibilities.map((resp: string) => (
+                    <li class="flex items-start text-xs md:text-sm">
+                      <FaCheck client:load className="mr-2 mt-1 flex-shrink-0" style={{ color: "#73b355" }} />
+                      <span style="color: #000500;" class="leading-relaxed">{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
+      </div>
+
+      <!-- Department Heads -->
+      <div class="row justify-center gy-4">
+        {team.members.filter((member: any) => !member.position.includes("CEO") && !member.position.includes("Director Ejecutivo")).map((member: any) => (
+          <div class="col-12 sm:col-6 lg:col-4 xl:col-4 mb-6 md:mb-8">
+            <div class="team-card text-center p-4 md:p-6 rounded-lg shadow-lg h-full" style="background: white; border: 2px solid #73b355;">
+              <div class="mb-3 md:mb-4 flex justify-center">
+                {member.position === "Diseñadora de Interiores" && <FaPalette client:load className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4" style={{ color: "#73b355" }} />}
+                {member.position === "Especialista en Sostenibilidad" && <FaLeaf client:load className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4" style={{ color: "#73b355" }} />}
+                {member.position === "Analista de Costos" && <FaCalculator client:load className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4" style={{ color: "#73b355" }} />}
+                {member.position === "Coordinador de Logística" && <FaTruck client:load className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4" style={{ color: "#73b355" }} />}
+                {member.position === "Gerente de Calidad" && <FaShieldAlt client:load className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4" style={{ color: "#73b355" }} />}
+              </div>
+              <h3 class="text-base md:text-lg font-bold mb-2" style="color: #000500;">{member.name}</h3>
+              <p class="text-sm md:text-base font-semibold mb-3" style="color: #2e8785;">{member.position}</p>
+              <div class="flex items-center justify-center mb-3 md:mb-4 flex-wrap">
+                <FaEnvelope client:load className="mr-2 flex-shrink-0" style={{ color: "#73b355" }} />
+                <span class="text-xs md:text-sm break-all" style="color: #000500;">{member.email}</span>
+              </div>
+              <div class="text-left">
+                <h4 class="font-semibold mb-2 text-sm md:text-base" style="color: #2e8785;">Responsabilidades:</h4>
+                <ul class="space-y-1 md:space-y-2">
+                  {member.responsibilities.map((resp: string) => (
+                    <li class="flex items-start text-xs md:text-sm">
+                      <FaCheck client:load className="mr-2 mt-1 flex-shrink-0" style={{ color: "#73b355" }} />
+                      <span style="color: #000500;" class="leading-relaxed">{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

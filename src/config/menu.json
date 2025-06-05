@@ -9,13 +9,14 @@
       "url": "/about"
     },
     {
-      "name": "Contacto",
-      "url": "/contact"
+      "name": "Legal",
+      "url": "/legal"
     },
     {
-      "name": "Patente",
-      "url": "/patent"
+      "name": "Contacto",
+      "url": "/contact"
     }
+    
   ],
   "footer": [
     {

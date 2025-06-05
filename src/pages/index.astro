@@ -3,6 +3,8 @@
 import Base from "@/layouts/Base.astro";
 import { FaBroom, FaTools, FaHome, FaStar, FaBullseye, FaBolt, FaLeaf, FaExclamationTriangle, FaClipboardList, FaGem, FaPhone, FaCogs, FaShieldAlt, FaClock } from 'react-icons/fa';
 
+import { TfiThought } from 'react-icons/tfi';
+
 ---
 
 <Base>
@@ -189,9 +191,10 @@ import { FaBroom, FaTools, FaHome, FaStar, FaBullseye, FaBolt, FaLeaf, FaExclama
   <!-- Testimonials Section -->
   <section class="section" style="background-color: #eefff0;">
     <div class="container">
-      <div class="text-center">
+      <div class="text-center flex flex-col items-center">
+        <TfiThought className="mb-4 text-5xl" />
         <h2 class="page-heading text-4xl" style="color: #000500;">
-          💬 Testimonios de Clientes Satisfechos
+          Testimonios de Clientes Satisfechos
         </h2>
       </div>
       <div class="grid gap-8 md:grid-cols-3">
