@@ -1,22 +1,253 @@
 ---
-import config from "@/config/config.json";
-import Base from "@/layouts/Base.astro";
-import Pagination from "@/layouts/components/Pagination.astro";
-import Posts from "@/layouts/Posts.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import { sortByDate } from "@/lib/utils/sortFunctions";
 
-const posts = await getSinglePage("posts");
-const sortedPosts = sortByDate(posts);
-const totalPages = Math.ceil(posts.length / config.settings.pagination);
-const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+import Base from "@/layouts/Base.astro";
+import { FaBroom, FaTools, FaHome, FaStar, FaBullseye, FaBolt, FaLeaf, FaExclamationTriangle, FaClipboardList, FaGem, FaPhone, FaCogs, FaShieldAlt, FaClock } from 'react-icons/fa';
+
 ---
 
 <Base>
-  <section class="section">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-24" style="background: linear-gradient(135deg, #2e8785 0%, #73b355 100%);">
+    <div class="container relative z-10">
+      <div class="text-center text-white">
+        <h1 class="mb-6 text-4xl font-bold md:text-6xl" style="color: #eefff0;">
+          Clarity Spaces – Orden, Limpieza y Bienestar para tu Espacio
+        </h1>
+        <p class="mb-4 text-xl" style="color: #eefff0;">
+          🔹 Transformamos tu entorno, mejoramos tu calidad de vida
+        </p>
+        <p class="mb-8 text-lg opacity-90" style="color: #eefff0;">
+          Tu hogar, oficina o empresa merece estar impecable. Descubre cómo nuestros servicios de limpieza, mantenimiento y equipamiento pueden hacer la diferencia.
+        </p>
+        <a href="/contact" class="inline-block rounded-lg px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg" style="background-color: #73b355; color: #000500;">
+          Cotiza tu servicio
+        </a>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-black/10"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" style="background-color: #eefff0;">
     <div class="container">
-      <Posts posts={currentPosts} className="mb-16" />
-      <Pagination currentPage={1} totalPages={totalPages} />
+      <div class="text-center">
+        <h2 class="page-heading text-4xl" style="color: #000500;">
+          Servicios que ofrecemos
+        </h2>
+      </div>
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Limpieza Profesional -->
+        <div class="rounded-xl p-8 text-center shadow-lg transition-all duration-300 hover:scale-105" style="background-color: white;">
+          <div class="mb-6 flex justify-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full" style="background-color: #2e8785; color: #eefff0;">
+              <FaBroom className="text-2xl" />
+            </div>
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Limpieza Profesional</h3>
+          <p class="mb-4" style="color: #000500;">Desde espacios residenciales hasta oficinas y empresas.</p>
+          <ul class="space-y-2 text-sm" style="color: #000500;">
+            <li>Limpieza profunda de oficinas</li>
+            <li>Limpieza doméstica especializada</li>
+            <li>Limpieza post-construcción</li>
+            <li>Servicios de limpieza industrial</li>
+          </ul>
+        </div>
+
+        <!-- Mantenimiento Integral -->
+        <div class="rounded-xl p-8 text-center shadow-lg transition-all duration-300 hover:scale-105" style="background-color: white;">
+          <div class="mb-6 flex justify-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full" style="background-color: #73b355; color: #eefff0;">
+              <FaTools className="text-2xl" />
+            </div>
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Mantenimiento Integral</h3>
+          <p class="mb-4" style="color: #000500;">Reparaciones y soluciones para que todo funcione perfectamente.</p>
+          <ul class="space-y-2 text-sm" style="color: #000500;">
+            <li>Mantenimiento preventivo</li>
+            <li>Reparaciones menores</li>
+            <li>Instalaciones eléctricas básicas</li>
+            <li>Plomería y fontanería</li>
+          </ul>
+        </div>
+
+        <!-- Equipamiento de Espacios -->
+        <div class="rounded-xl p-8 text-center shadow-lg transition-all duration-300 hover:scale-105" style="background-color: white;">
+          <div class="mb-6 flex justify-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full" style="background-color: #2e8785; color: #eefff0;">
+              <FaHome className="text-2xl" />
+            </div>
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Equipamiento de Espacios</h3>
+          <p class="mb-4" style="color: #000500;">Asesoría y productos para optimizar tu entorno.</p>
+          <ul class="space-y-2 text-sm" style="color: #000500;">
+            <li>Mobiliario de oficina</li>
+            <li>Sistemas de organización</li>
+            <li>Equipos de limpieza profesional</li>
+            <li>Soluciones de almacenamiento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="section" style="background-color: white;">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="page-heading text-4xl" style="color: #000500;">
+           ¿Por qué elegir Clarity Spaces?
+        </h2>
+      </div>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="flex flex-col items-center text-center">
+          <div class="mb-4 flex h-20 w-20 items-center justify-center rounded-full" style="background-color: #2e8785; color: #eefff0;">
+            <FaStar className="text-3xl" />
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Calidad Garantizada</h3>
+          <p style="color: #000500;">Personal capacitado y materiales de primera calidad para resultados excepcionales.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center">
+          <div class="mb-4 flex h-20 w-20 items-center justify-center rounded-full" style="background-color: #73b355; color: #eefff0;">
+            <FaBullseye className="text-3xl" />
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Soluciones Personalizadas</h3>
+          <p style="color: #000500;">Adaptamos nuestros servicios a tus necesidades específicas y presupuesto.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center">
+          <div class="mb-4 flex h-20 w-20 items-center justify-center rounded-full" style="background-color: #2e8785; color: #eefff0;">
+            <FaBolt className="text-3xl" />
+          </div>
+          <h3 class="mb-4 text-xl font-bold" style="color: #000500;">Rapidez y Eficiencia</h3>
+          <p style="color: #000500;">Resultados impecables sin interrupciones en tu rutina diaria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Services Section -->
+  <section class="section" style="background: linear-gradient(135deg, #73b355 0%, #2e8785 100%);">
+    <div class="container"> ">
+      <div class="text-center">
+        <h2 class="mb-12 text-4xl font-bold flex items-center justify-center gap-3" style="color: #eefff0;">
+          <FaCogs className="text-3xl" /> Servicios Adicionales
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaLeaf />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Limpieza Ecológica</h4>
+          <p class="text-sm" style="color: #ffffff;">Productos biodegradables y amigables con el medio ambiente.</p>
+        </div>
+
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaExclamationTriangle />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Servicios de Emergencia</h4>
+          <p class="text-sm" style="color: #ffffff;">Disponibles 24/7 para situaciones urgentes.</p>
+        </div>
+
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaClipboardList />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Contratos de Mantenimiento</h4>
+          <p class="text-sm" style="color: #ffffff;">Planes mensuales y anuales con descuentos especiales.</p>
+        </div>
+
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaGem />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Servicios Premium</h4>
+          <p class="text-sm" style="color: #ffffff;">Experiencia de lujo con atención personalizada.</p>
+        </div>
+
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaShieldAlt />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Seguridad y Desinfección</h4>
+          <p class="text-sm" style="color: #ffffff;">Protocolos de higiene y desinfección especializada.</p>
+        </div>
+
+        <div class="rounded-lg p-6 text-center" style="background-color: rgba(255, 255, 255, 0.15);">
+          <div class="mb-4 flex justify-center text-4xl" style="color: #ffffff;">
+            <FaClock />
+          </div>
+          <h4 class="mb-2 font-bold" style="color: #ffffff;">Horarios Flexibles</h4>
+          <p class="text-sm" style="color: #ffffff;">Adaptamos nuestros horarios a tu disponibilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" style="background-color: #eefff0;">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="page-heading text-4xl" style="color: #000500;">
+          💬 Testimonios de Clientes Satisfechos
+        </h2>
+      </div>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="rounded-xl p-6 shadow-lg" style="background-color: white;">
+          <div class="mb-4 flex justify-center">
+            <img src="/images/image-placeholder.png" alt="Cliente satisfecho" class="h-16 w-16 rounded-full object-cover" />
+          </div>
+          <p class="mb-4 italic" style="color: #000500;">"Excelente servicio, mi oficina nunca había estado tan limpia y ordenada. El equipo es muy profesional."</p>
+          <div class="mb-2 flex justify-center space-x-1">
+            <span style="color: #73b355;">⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="font-semibold" style="color: #2e8785;">- María González, CEO</p>
+        </div>
+
+        <div class="rounded-xl p-6 shadow-lg" style="background-color: white;">
+          <div class="mb-4 flex justify-center">
+            <img src="/images/image-placeholder.png" alt="Cliente satisfecho" class="h-16 w-16 rounded-full object-cover" />
+          </div>
+          <p class="mb-4 italic" style="color: #000500;">"El mantenimiento de nuestro edificio ha mejorado considerablemente. Recomiendo sus servicios al 100%."</p>
+          <div class="mb-2 flex justify-center space-x-1">
+            <span style="color: #73b355;">⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="font-semibold" style="color: #2e8785;">- Carlos Ruiz, Administrador</p>
+        </div>
+
+        <div class="rounded-xl p-6 shadow-lg" style="background-color: white;">
+          <div class="mb-4 flex justify-center">
+            <img src="/images/image-placeholder.png" alt="Cliente satisfecho" class="h-16 w-16 rounded-full object-cover" />
+          </div>
+          <p class="mb-4 italic" style="color: #000500;">"Transformaron completamente nuestro espacio de trabajo. Ahora es más funcional y agradable."</p>
+          <div class="mb-2 flex justify-center space-x-1">
+            <span style="color: #73b355;">⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="font-semibold" style="color: #2e8785;">- Ana López, Gerente</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="section" style="background: linear-gradient(135deg, #2e8785 0%, #73b355 100%);">
+    <div class="container text-center">
+      <h2 class="mb-6 text-4xl font-bold" style="color: #eefff0;">
+        ¿Listo para transformar tu espacio?
+      </h2>
+      <p class="mb-8 text-xl" style="color: #eefff0;">
+        Contáctanos hoy mismo y recibe una cotización gratuita personalizada
+      </p>
+      <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+        <a href="/contact" class="rounded-lg px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg" style="background-color: #eefff0; color: #000500;">
+          Solicitar Cotización Gratuita
+        </a>
+        <a href="tel:+1234567890" class="flex items-center justify-center rounded-lg border-2 px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105" style="border-color: #eefff0; color: #eefff0;">
+          <FaPhone className="mr-2" /> Llamar Ahora
+        </a>
+      </div>
     </div>
   </section>
 </Base>
