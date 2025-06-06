@@ -199,43 +199,79 @@ import previewRegistroMercantil from "../../public/images/preview-registro-merca
         </button>
       </div>
       <div class="p-4 flex-grow overflow-auto relative">
-        <div id="loadingPatente1" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
-          <div class="text-center">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
-            <p class="text-gray-600">Cargando documento...</p>
+        <!-- Vista para móviles: Imagen optimizada -->
+        <div id="mobileView1" class="block md:hidden">
+          <div class="text-center mb-4">
+            <p class="text-sm text-gray-600 mb-4">
+              📱 <strong>Vista móvil:</strong> Se muestra la imagen del documento. 
+              <br>Para ver el PDF completo, descárgalo usando el botón de abajo.
+            </p>
           </div>
-        </div>
-        <object 
-          data="/documents/patente_comercio_empresa.pdf" 
-          type="application/pdf" 
-          width="100%" 
-          height="100%" 
-          style="min-height: 60vh;"
-          aria-label="Documento PDF de patente de empresa"
-          onload="document.getElementById('loadingPatente1').style.display='none'"
-          onerror="showPdfError('loadingPatente1', '/documents/patente_comercio_empresa.pdf')"
-        >
-          <div class="text-center py-8">
-            <div class="mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
-                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
-              </svg>
-              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
-            </div>
+          <div class="bg-gray-50 rounded-lg p-4 mb-4 max-w-md mx-auto">
+            <Image
+              src={previewPatenteEmpresa}
+              alt="Vista completa de la patente de comercio de empresa"
+              class="w-full h-auto rounded border shadow-sm"
+              width={600}
+              height={800}
+              format="webp"
+              quality={90}
+            />
+          </div>
+          <div class="text-center">
             <a 
               href="/documents/patente_comercio_empresa.pdf" 
               download 
-              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              class="inline-flex items-center px-6 py-3 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors text-sm font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
                 <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
                 <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
               </svg>
-              Descargar PDF
+              Descargar PDF Completo
             </a>
           </div>
-        </object>
+        </div>
+
+        <!-- Vista para escritorio: PDF incrustado -->
+        <div id="desktopView1" class="hidden md:block">
+          <div id="loadingPatente1" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+            <div class="text-center">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+              <p class="text-gray-600">Cargando documento...</p>
+            </div>
+          </div>
+          <object 
+            data="/documents/patente_comercio_empresa.pdf" 
+            type="application/pdf" 
+            width="100%" 
+            height="100%" 
+            style="min-height: 60vh;"
+            aria-label="Documento PDF de patente de empresa"
+            onload="document.getElementById('loadingPatente1').style.display='none'"
+            onerror="showPdfError('loadingPatente1', '/documents/patente_comercio_empresa.pdf')"
+          >
+            <div class="text-center py-8">
+              <div class="mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                </svg>
+                <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+              </div>
+              <a 
+                href="/documents/patente_comercio_empresa.pdf" 
+                download 
+                class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                  <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                  <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+                </svg>
+                Descargar PDF
+              </a>
+            </div>
+          </object>
+        </div>
       </div>
     </div>
   </div>
@@ -267,43 +303,79 @@ import previewRegistroMercantil from "../../public/images/preview-registro-merca
         </button>
       </div>
       <div class="p-4 flex-grow overflow-auto relative">
-        <div id="loadingPatente2" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
-          <div class="text-center">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
-            <p class="text-gray-600">Cargando documento...</p>
+        <!-- Vista para móviles: Imagen optimizada -->
+        <div id="mobileView2" class="block md:hidden">
+          <div class="text-center mb-4">
+            <p class="text-sm text-gray-600 mb-4">
+              📱 <strong>Vista móvil:</strong> Se muestra la imagen del documento. 
+              <br>Para ver el PDF completo, descárgalo usando el botón de abajo.
+            </p>
           </div>
-        </div>
-        <object 
-          data="/documents/patente_comercio_sociedad.pdf" 
-          type="application/pdf" 
-          width="100%" 
-          height="100%" 
-          style="min-height: 60vh;"
-          aria-label="Documento PDF de patente de sociedad"
-          onload="document.getElementById('loadingPatente2').style.display='none'"
-          onerror="showPdfError('loadingPatente2', '/documents/patente_comercio_sociedad.pdf')"
-        >
-          <div class="text-center py-8">
-            <div class="mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
-                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
-              </svg>
-              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
-            </div>
+          <div class="bg-gray-50 rounded-lg p-4 mb-4 max-w-md mx-auto">
+            <Image
+              src={previewPatenteSociedad}
+              alt="Vista completa de la patente de comercio de sociedad"
+              class="w-full h-auto rounded border shadow-sm"
+              width={600}
+              height={800}
+              format="webp"
+              quality={90}
+            />
+          </div>
+          <div class="text-center">
             <a 
               href="/documents/patente_comercio_sociedad.pdf" 
               download 
-              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              class="inline-flex items-center px-6 py-3 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors text-sm font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
                 <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
                 <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
               </svg>
-              Descargar PDF
+              Descargar PDF Completo
             </a>
           </div>
-        </object>
+        </div>
+
+        <!-- Vista para escritorio: PDF incrustado -->
+        <div id="desktopView2" class="hidden md:block">
+          <div id="loadingPatente2" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+            <div class="text-center">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+              <p class="text-gray-600">Cargando documento...</p>
+            </div>
+          </div>
+          <object 
+            data="/documents/patente_comercio_sociedad.pdf" 
+            type="application/pdf" 
+            width="100%" 
+            height="100%" 
+            style="min-height: 60vh;"
+            aria-label="Documento PDF de patente de sociedad"
+            onload="document.getElementById('loadingPatente2').style.display='none'"
+            onerror="showPdfError('loadingPatente2', '/documents/patente_comercio_sociedad.pdf')"
+          >
+            <div class="text-center py-8">
+              <div class="mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                </svg>
+                <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+              </div>
+              <a 
+                href="/documents/patente_comercio_sociedad.pdf" 
+                download 
+                class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                  <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                  <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+                </svg>
+                Descargar PDF
+              </a>
+            </div>
+          </object>
+        </div>
       </div>
     </div>
   </div>
@@ -335,43 +407,80 @@ import previewRegistroMercantil from "../../public/images/preview-registro-merca
         </button>
       </div>
       <div class="p-4 flex-grow overflow-auto relative">
-        <div id="loadingRegistro" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
-          <div class="text-center">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
-            <p class="text-gray-600">Cargando documento...</p>
+        <!-- Vista para móviles: Imagen optimizada -->
+        <div id="mobileView3" class="block md:hidden">
+          <div class="text-center mb-4">
+            <p class="text-sm text-gray-600 mb-4">
+              📱 <strong>Vista móvil:</strong> Se muestra la imagen del documento. 
+              <br>Para ver el PDF completo, descárgalo usando el botón de abajo.
+            </p>
           </div>
-        </div>
-        <object 
-          data="/documents/registro_mercantil.PDF" 
-          type="application/pdf" 
-          width="100%" 
-          height="100%" 
-          style="min-height: 60vh;"
-          aria-label="Documento PDF de registro mercantil"
-          onload="document.getElementById('loadingRegistro').style.display='none'"
-          onerror="showPdfError('loadingRegistro', '/documents/registro_mercantil.PDF')"
-        >
-          <div class="text-center py-8">
-            <div class="mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
-                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
-              </svg>
-              <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
-            </div>
+          <div class="bg-gray-50 rounded-lg p-4 mb-4 max-w-lg mx-auto">
+            <Image
+              src={previewRegistroMercantil}
+              alt="Vista completa del documento de registro mercantil"
+              class="w-full h-auto rounded border shadow-sm"
+              width={700}
+              height={500}
+              format="webp"
+              quality={90}
+            />
+          </div>
+          <div class="text-center">
             <a 
               href="/documents/registro_mercantil.PDF" 
               download 
-              class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              class="inline-flex items-center px-6 py-3 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors text-sm font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
                 <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
                 <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
               </svg>
-              Descargar PDF
+              Descargar PDF Completo
             </a>
           </div>
-        </object>
+        </div>
+
+        <!-- Vista para escritorio: PDF incrustado -->
+        <div id="desktopView3" class="hidden md:block">
+          <div id="loadingRegistro" class="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+            <div class="text-center">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#2e8785] mb-4"></div>
+              <p class="text-gray-600">Cargando documento...</p>
+            </div>
+          </div>
+          <object 
+            data="/documents/registro_mercantil.PDF" 
+            type="application/pdf" 
+            width="100%" 
+            height="100%" 
+            style="min-height: 60vh;"
+            aria-label="Documento PDF de registro mercantil"
+            onload="document.getElementById('loadingRegistro').style.display='none'"
+            onerror="showPdfError('loadingRegistro', '/documents/registro_mercantil.PDF')"
+          >
+            <div class="text-center py-8">
+              <div class="mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mx-auto text-gray-400 mb-4" viewBox="0 0 16 16">
+                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                  <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.135.968z"/>
+                </svg>
+                <p class="text-gray-600 mb-4">Tu navegador no puede mostrar PDFs.</p>
+              </div>
+              <a 
+                href="/documents/registro_mercantil.PDF" 
+                download 
+                class="inline-flex items-center px-4 py-2 bg-[#2e8785] text-white rounded-lg hover:bg-[#246663] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                  <path d="M8 0a1 1 0 0 1 1 1v6.5l2.5-2.5a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4L7 7.5V1a1 1 0 0 1 1-1z"/>
+                  <path d="M1.5 13.5A1.5 1.5 0 0 0 3 15h10a1.5 1.5 0 0 0 1.5-1.5v-6a1 1 0 0 0-2 0v6a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5v-6a1 1 0 0 0-2 0v6z"/>
+                </svg>
+                Descargar PDF
+              </a>
+            </div>
+          </object>
+        </div>
       </div>
     </div>
   </div>
